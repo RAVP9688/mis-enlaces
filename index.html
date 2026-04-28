@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Mis enlaces</title>
-</head>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
 body {
@@ -39,29 +39,32 @@ a:hover {
 }
 
 .hero::after {
-    content: "";
+    content: "Acepta el llamado";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.2));
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.1));
 }
 .hero {
-    height: 20vh;              /* ajuste de imagen en pantalla */
+    height: 75vh;              /* ajuste de imagen en pantalla */
     width: 100%;               /* ancho completo */
     background-image: url("images.jpeg");
-    background-size: 80%;    /* ajusta sin deformar */
+    background-size: 90%;    /* ajusta sin deformar */
     background-position: center top; /* CENTRA la imagen */
     background-repeat: no-repeat;
 
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
-    transition: height 1s ease;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.6);
+    transition: height 1.2s ease, transform 1.2s ease;
+    transform: translateY(0);
 }
-body.scrolled .hero {
-    height: 20vh;
+.hero.small {
+    height: 25vh;
+    transform: translateY(-10px);
 }
 </style>
+</head>
 <body>
 <div class="hero"></div>
 <h1>Mis enlaces importantes</h1>
@@ -75,8 +78,10 @@ body.scrolled .hero {
    <a href="https://maps.app.goo.gl/sAm1NgvGALoHbCBd8">📍 Ver ubicacion</a>
 </div>
 <script>
-window.addEventListener("scroll", function() {
-    document.body.classList.toggle("scrolled", window.scrollY > 100);
+window.addEventListener("load", function () {
+    setTimeout(function () {
+        document.querySelector(".hero").classList.add("small");
+    }, 300);
 });
 </script>
 </body>
