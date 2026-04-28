@@ -37,16 +37,6 @@ a:hover {
 .hero {
     position: relative;
 }
-
-.hero::after {
-    content: "Acepta el llamado";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.1));
-}
 .hero {
     height: 75vh;              /* ajuste de imagen en pantalla */
     width: 100%;               /* ancho completo */
@@ -56,7 +46,7 @@ a:hover {
     background-repeat: no-repeat;
     transition: height 1.2s ease, transform 1.2s ease;
     transform: translateY(0);
-    
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.4);
    
 }
 .hero.small {
