@@ -35,10 +35,12 @@ a:hover {
     background: #ddd;
 }
 .hero {
-    height: 75vh;
-    background: url("images.jpeg") no-repeat center center;
-    background-size: cover;
-    transition: all 1s ease;
+    height: 25vh;              /* 1/4 de pantalla */
+    width: 100%;               /* ancho completo */
+    background-image: url("images.jpeg");
+    background-size: cover;    /* ajusta sin deformar */
+    background-position: center; /* CENTRA la imagen */
+    background-repeat: no-repeat;
 }
 body.scrolled .hero {
     height: 25vh;
@@ -56,5 +58,10 @@ body.scrolled .hero {
 <div class="card">
    <a href="https://maps.app.goo.gl/sAm1NgvGALoHbCBd8">📍 Ver ubicacion</a>
 </div>
+<script>
+window.addEventListener("scroll", function() {
+    document.body.classList.toggle("scrolled", window.scrollY > 100);
+});
+</script>
 </body>
 </html>
