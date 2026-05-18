@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <title>Mis enlaces</title>
@@ -140,24 +139,68 @@ a:hover {
 <div class="hero"></div>
 <h1>Comex Niños</h1>
 <div class="card">
-  <a href="https://drive.google.com/file/d/1m5uZlpra_RXzbgG7iGXhBq4HHjJWkQSu/view?usp=drive_link"class="btn drive">
+  <a href="https://drive.google.com/file/d/1m5uZlpra_RXzbgG7iGXhBq4HHjJWkQSu/view?usp=drive_link"class="btn drive" onclick="openDrive()">
     <i class="fab fa-google-drive"></i>
     <span>Gran Venta Imper</span>
 </a>      
 </div>
 <div class="card">
-   <a href="https://maps.app.goo.gl/yKpT34iGXFDu55bh6" class="btn maps">
+   <a href="https://maps.app.goo.gl/yKpT34iGXFDu55bh6" class="btn maps" onclick="openMaps()">
     <i class="fas fa-map-marker-alt"></i>
     <span>Ubicación</span>
 </a>
 </div>
 <div class="card">
-   <a href="https://wa.me/527821454273" class="btn whatsapp">
+   <a href="https://wa.me/527821454273" class="btn whatsapp" onclick="openWhatsApp()">
   <i class="fab fa-whatsapp"></i>
        <span>WhatsApp</span>
 </a>
 </div>
-<script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+  import { getFirestore, doc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+  const firebaseConfig = {
+  apiKey: "AIzaSyDcYcwgFmNA3Z6XYKDX2ZpXR-Vm-2Zf10E",
+  authDomain: "qrninos.firebaseapp.com",
+  projectId: "qrninos",
+  storageBucket: "qrninos.firebasestorage.app",
+  messagingSenderId: "522349083530",
+  appId: "1:522349083530:web:8ca71698045b5aac796673"
+};
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const qrId = "qr_001";
+
+  // 🔥 CONTAR VISITA (ESCANEO QR)
+  updateDoc(doc(db, "qrs", qrId), {
+    views: increment(1)
+  });
+
+  // 🔵 WHATSAPP
+  window.openWhatsApp = function () {
+    updateDoc(doc(db, "qrs", qrId), {
+      whatsapp: increment(1)
+    });
+  };
+
+  // 📁 DRIVE
+  window.openDrive = function () {
+    updateDoc(doc(db, "qrs", qrId), {
+      drive: increment(1)
+    });
+  };
+
+  // 🗺️ MAPS
+  window.openMaps = function () {
+    updateDoc(doc(db, "qrs", qrId), {
+      maps: increment(1)
+    });
+  };
+</script>
+<script>    
 window.addEventListener("load", function () {
     setTimeout(function () {
         document.querySelector(".hero").classList.add("small");
