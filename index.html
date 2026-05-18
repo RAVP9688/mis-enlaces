@@ -45,14 +45,18 @@ a:hover {
     background-size: 90%;    /* ajusta sin deformar */
     background-position: center top; /* CENTRA la imagen */
     background-repeat: no-repeat;
-    transition: height 1.2s ease, transform 1.2s ease;
+    transition: all 1.2s ease; /*transition: height 1.2s ease, transform 1.2s ease;*/
     transform: translateY(0);
-      box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    opacity: 1;
+
+    overflow: hidden;
+    /*box-shadow: 0px 10px 25px rgba(0,0,0,0.1);*/ /*la sombra puede hacer que todavía “se note algo” aunque la imagen ya desapareció */
    
 }
 .hero.small {
-    height: 25vh;
-    transform: translateY(-10px);
+    height: 0vh;
+    opacity: 0;
+    transform: translateY(-100px);
 }
 .btn { /* Modificaciones de etiqueta whatsapp */
     display: inline-flex;
@@ -121,12 +125,12 @@ a:hover {
 .drive {
     background-image: url("Captura de pantalla 2026-05-17 215342.png");
     background-size: 100px;
-    background-position: 5px center;
+    background-position: 7px center;
     background-repeat: no-repeat;
 }   
 .maps {
     background-image: url("69a01057-5c9f-4a3a-aafe-a0a3df483406.png");
-    background-size: 120px;
+    background-size: 110px;
     background-position: 5px center;
     background-repeat: no-repeat;
 }
