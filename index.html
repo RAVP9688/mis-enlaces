@@ -181,7 +181,7 @@ const now = Date.now();
 const lastVisit = localStorage.getItem(visitKey);
 
 // 30 minutos = 1800000 ms
-if (!lastVisit || now - lastVisit > 300000) {
+if (!lastVisit || now - lastVisit > 86400000) {
   
   updateDoc(doc(db, "qrs", qrId), {
     views: increment(1)
